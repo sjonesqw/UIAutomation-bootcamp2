@@ -13,6 +13,8 @@
 //const { $ } = require('webdriverio/build/commands/element');
 //const key = require ('webdriverio/' ) ;
 const { Key } =  require("webdriverio");
+//const { $ } = require("webdriverio/build/commands/element");
+//const { $ } = require("webdriverio/build/commands/element");
 //onst { $ } = require("webdriverio/build/commands/element");
 //const { $ } = require("webdriverio/build/commands/element");
 const Page = require('./page');
@@ -31,7 +33,9 @@ class checkout extends Page {
      *  
      */
     get detailedcart(){
-        return $('//button[normalize-space()="View detailed cart"]');
+        return $('button[class="snipcart-button-link"]');
+        //return $('//button[normalize-space()="View detailed cart"]');
+        //return $('#snipcart > div > div > div.snipcart-layout__content.snipcart-layout__content--side.snipcart-cart--edit > section > div > div:nth-child(2) > footer > button.snipcart-button-link');
     }
 
     get checkoutbtn (){
@@ -118,12 +122,12 @@ class checkout extends Page {
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
      */
-    async checkout (name, email, address,aptsuite, city,province, postalcode) {
+    async checkoutshipping (name, email, address,aptsuite, city,province, postalcode) {
         await this.detailedcart.waitForDisplayed(2000);
         //await this.checkoutbtn.waitForDisplayed(2000);
         await this.detailedcart.click();
         await this.checkoutbtn.click();
-        await browser.url('https://ui-automation-camp.vercel.app/products#/checkout');
+        //await browser.url('https://ui-automation-camp.vercel.app/products#/checkout');
         await this.billingname.waitForDisplayed(2000);
         //await this.billingname.click();
         await this.billingname.setValue(name);
@@ -158,8 +162,15 @@ class checkout extends Page {
         // await this.billingpcode.setValue(postalcode);
         await this.billingsubmit.click();
         //await browser.pause(2000);
-        var paymentbox = await browser.findElement('//div[@class="snipcart-payment-card-form snipcart-payment-card-form--loaded"]/iframe','iframe');
-        await browser.switchToFrame(paymentbox);
+        
+        
+
+
+        //await browser.setValue('input', ['Tab']);
+        
+    }
+    async checkoutpayment (){
+        
             
         await this.billingcard.waitForDisplayed(1500);
         await this.billingcard.click();
@@ -167,13 +178,7 @@ class checkout extends Page {
         await this.billingexpiry.setValue(expdate);
         await this.billingcvv.setValue (cvv);
         await this.paymentbtn.click();
-        
-
-
-        //await browser.setValue('input', ['Tab']);
-        
     }
-    
 
 
     /**

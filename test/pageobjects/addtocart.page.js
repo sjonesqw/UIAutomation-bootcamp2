@@ -52,12 +52,14 @@ class addtocart extends Page{
 
     //add multiple of a single item to cart, from gallery page
     async addsingleitem () {
+        await this.selectitem.waitForDisplayed(1500);
         await this.selectitem.click();
         await browser.pause(2000);
     }
 
     //add more than one types of items to the cart, from gallery page
     async addmultiplteitems () {
+        await this.mitem1.waitForDisplayed(2000);
         await this.mitem1.click();
         await browser.pause(1500);
         await this.mitem2.click();

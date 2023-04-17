@@ -22,9 +22,13 @@ describe('My checkout  test ', () => {
         await LoginPage.open();
         await LoginPage.login("test@mailinator.com", "Stephanie1!");
         await browser.pause(2000);
-        await browser.url('https://ui-automation-camp.vercel.app/products');
-        await addtocart.addsingleitem();
-        await checkoutPage.checkout("Test Jay","test@mailinator.com","address_Full_match", "678","Chicago","New brunswick","10");
+        expect( browser.url('https://ui-automation-camp.vercel.app/products'));
+        await addtocart.addmultiplteitems();
+        //await browser.pause(2000);
+        await checkoutPage.checkoutshipping("Test Jay","test@mailinator.com","address_Full_match", "678","Chicago","New brunswick","10");
+        const paymentbox = await checkoutPage.paymentiframe;
+        await browser.switchToFrame(paymentbox);
+        await checkoutPage.checkoutpayment();
         //await cartview.viewanddeletefromdetail();
         await browser.pause(2000);
         //await browser.url('https://ui-automation-camp.vercel.app/products');

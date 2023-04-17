@@ -1,3 +1,6 @@
+//const { $ } = require('webdriverio/build/commands/element');
+//const { $ } = require('webdriverio/build/commands/element');
+//const { $ } = require('webdriverio/build/commands/element');
 const Page = require('./page');
 
 /**
@@ -12,7 +15,29 @@ class productgallery extends Page {
         return $('#search');
         
     }
-
+    get category(){
+        return $('#category');
+    }
+    get quantitybox (){
+        //return $('body > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)');
+       // return $('#product-0 > div.chakra-stack.css-n21gh5 > div > div.chakra-numberinput.css-9renge > input');
+       return $('#product-0-increase');
+    }
+    get firstprod (){
+        return $('#product-0');
+    }
+    get resultgrid  (){
+        return $('#__next > div.css-co4zd9 > div > div:nth-child(2) > div.css-12qzrsi');
+    }
+    get favoritefirst(){
+        return $('div[id="product-0"] div[class="css-1m8iww1"]');
+    }
+    get toast(){
+        return $('#chakra-toast-manager-top-right > li > div');
+    }
+    get pagetext (){
+        return $('#__next > div.css-co4zd9 > div > div:nth-child(1) > div > div.chakra-stack.css-p4fh8y > p');
+    }
 
     get resetbtn () {
        
@@ -24,12 +49,24 @@ class productgallery extends Page {
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
      */
+    async selectcategory (){
+        await this.category.scrollIntoView();
+        await this.category.waitForClickable(2000);
+        await this.category.selectByAttribute("value","pant");
+        //await this.category.click();
+
+    }
+    async setquantity (){
+        await this.quantitybox.click();
+        await this.quantitybox.click();
+    
+    }
     async favorite () {
-        await this.searchfield.scrollIntoview();
-        await  this.searchfield.click();
-        await  this.searchfield.setValue(term);
-        //verify that search results match term
-        await this.resetbtn.click();
+        await  this.resetbtn.click();
+        await  this.favoritefirst.waitForExist(3000);
+        await  this.favoritefirst.click();
+        
+        
         
         
     }
@@ -43,4 +80,4 @@ class productgallery extends Page {
     }
 }
 
-module.exports = new search();
+module.exports = new productgallery();

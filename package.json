@@ -13,6 +13,7 @@
     "filterandsort": "npx wdio run wdio.conf.js --spec ./test/specs/filterandsort.e2e.js",
     "search": "npx wdio run wdio.conf.js --spec ./test/specs/search.e2e.js",
     "contact": "npx wdio run wdio.conf.js --spec ./test/specs/contact.e2e.js",
+    "productgallery": "npx wdio run wdio.conf.js --spec ./test/specs/productgalleryhomepage.e2e.js",
     "test": "wdio run ./wdio.conf.js"
   },
   "keywords": [],

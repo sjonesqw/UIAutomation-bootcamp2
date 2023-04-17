@@ -1,5 +1,6 @@
 
 const signupdata = require('../data/signupdata');
+const signupPage = require('../pageobjects/Authentication/signup.page');
 const signup = require('../pageobjects/Authentication/signup.page')
 //import { browser, $, $$, expect } from '@wdio/globals'
 //const SecurePage = require('../pageobjects/secure.page')
@@ -18,13 +19,14 @@ describe('My Login application', () => {
             if (user.username=="exisitng user"){
                 expect (signup.errormsg.toHaveText("We're sorry, something went wrong when attempting to sign up."));
                 await  browser.url('https://ui-automation-camp.vercel.app/');
+            }else{
+                expect( browser.url('https://ui-automation-camp.vercel.app/products'));
+                await signupPage.signoutbtn.waitForDisplayed(2000);
+                await signupPage.signoutbtn.click();
+                await browser.url('https://ui-automation-camp.vercel.app/');
             }
         }
         
-        await browser.url('https://ui-automation-camp.vercel.app/products');
-        //await expect(SecurePage.flashAlert).toBeExisting()
-        // await expect(SecurePage.flashAlert).toHaveTextContaining(
-        //     'You logged into a secure area!')
     });
     
 });

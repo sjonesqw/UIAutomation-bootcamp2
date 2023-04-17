@@ -1,5 +1,7 @@
 
 //const { $ } = require('webdriverio/build/commands/element');
+//const { $ } = require('webdriverio/build/commands/element');
+//const { $ } = require('webdriverio/build/commands/element');
 const Page = require('./page');
 
 class addtocart extends Page{
@@ -36,9 +38,13 @@ class addtocart extends Page{
     get detailedcart (){
         return $('//button[normalize-space()="View detailed cart"]');
     }
+    get cartsummary (){
+        return $('//section[@class="snipcart-cart__content"]');
+    }
 
     get rmvitem () {
-        return $('//li[1]//div[1]//div[1]//div[2]//div[1]//div[2]//div[2]//div[1]//div[1]//button[1]//*[name()="svg"]');
+        //return $('//li[1]//div[1]//div[1]//div[2]//div[1]//div[2]//div[2]//div[1]//div[1]//button[1]//*[name()="svg"]');
+        return $('button[title="Remove item"]');
     }
     // get rmvitem2 () {
     //     return $('//li[1]//div[1]//div[1]//div[2]//div[1]//div[2]//div[2]//div[1]//div[1]//button[1]//*[name()='svg']')

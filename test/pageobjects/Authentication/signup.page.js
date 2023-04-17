@@ -44,6 +44,10 @@ class signupnew extends Page {
     get errormsg (){
         return $('.auth0-global-message.auth0-global-message-error');
     }
+    get signoutbtn(){
+        return $('#top-sign-out');
+        //return $('//button[normalize-space()="Sign Out"]');
+    }
 
     /**
      * a method to encapsule automation code to interact with the page

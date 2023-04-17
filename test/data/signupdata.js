@@ -3,7 +3,7 @@ module.exports =
     [
         {
             username: "new user ",
-            email: "testnewnew@mailinator.com",
+            email: "testnewtings@mailinator.com",
             password: "Stephanie1!"
             
 

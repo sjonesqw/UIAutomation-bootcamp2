@@ -31,7 +31,7 @@ describe('My filter & sort test ', () => {
         await browser.pause(1000);
         //expect (filterandsort.filterZA()).toEqual(false);
         await filterandsort.filterAZ();
-        //expect(JSON.stringify(pageray) === JSON.stringify(items));
+        expect(JSON.stringify(pageray) === JSON.stringify(items));
         await browser.pause(1000);
         await filterandsort.filterhighlow();
         await browser.pause(1000);

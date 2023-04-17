@@ -29,18 +29,18 @@ describe('My filter & sort test ', () => {
         //await filterandsort.scrollIntoView();
         await filterandsort.filterZA();
         await browser.pause(1000);
-        expect (filterandsort.filterZA()).toEqual(false);
-        //await filterandsort.filterAZ();
+        //expect (filterandsort.filterZA()).toEqual(false);
+        await filterandsort.filterAZ();
         //expect(JSON.stringify(pageray) === JSON.stringify(items));
-        // await browser.pause(1000);
-        // await filterandsort.filterhighlow();
-        // await browser.pause(1000);
-        //await filterandsort.filterlowhigh();
-        //await browser.url('https://ui-automation-camp.vercel.app/products');
-        // await addtocart.addsingleitem();
-        // await checkoutPage.checkout("Test Jay","test@mailinator.com","address_Full_match", "678","Chicago","New brunswick","10");
-        // await cartview.viewanddeletefromdetail();
-        //await browser.pause(2000);
+        await browser.pause(1000);
+        await filterandsort.filterhighlow();
+        await browser.pause(1000);
+        await filterandsort.filterlowhigh();
+        await browser.url('https://ui-automation-camp.vercel.app/products');
+        await addtocart.addsingleitem();
+        await checkoutPage.checkout("Test Jay","test@mailinator.com","address_Full_match", "678","Chicago","New brunswick","10");
+        await cartview.viewanddeletefromdetail();
+        await browser.pause(2000);
         
         
     });

@@ -111,6 +111,7 @@ class checkout extends Page {
     get billingcard (){
         //return $('#card-number');
         return $('//*[@name="card-number"]');
+        //return  $('<iframe />').contentWindow.document.getElementById('//*[@name="card-number"]');
     }
     get billingexpiry(){
         return $('#expiry-date');
@@ -154,25 +155,9 @@ class checkout extends Page {
         //await browser.keys('5');
         await browser.pause(5000);
         
-        // await this.aptsuite.waitForDisplayed(2000);
-        // await this.aptsuite.click();
-        // await this.aptsuite.setValue(aptsuite);
-        // await this.billingcity.waitForDisplayed(2000);
-        // await this.billingcity.click();
-        // await this.billingcity.setValue(city);
-        // await this.billingcountry.waitForDisplayed(2000);
-        // await this.billingcountry.selectByIndex(2);
-        // await this.billingprovince.waitForDisplayed(2000);
-        // await this.billingprovince.click();
-        // await this.billingprovince.setValue(province);
-        // await this.billingpcode.waitForDisplayed(2000);
-        // await this.billingpcode.click();
-        // await this.billingpcode.setValue(postalcode);
+
         await this.billingsubmit.click();
         //await browser.pause(2000);
-        
-        
-
 
         //await browser.setValue('input', ['Tab']);
         

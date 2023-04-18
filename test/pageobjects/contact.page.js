@@ -1,4 +1,4 @@
-//const { $ } = require('webdriverio/build/commands/element');
+
 const Page = require('./page');
 
 /**
@@ -14,7 +14,8 @@ class contact extends Page {
         
     }
     get fname (){
-        return $('input[name="firstName"]');
+        //return $('input[name="firstName"]');
+        return $('#firstName');
     }
     get lname (){
         return $('input[name="lastName"]');
@@ -33,16 +34,19 @@ class contact extends Page {
     }
 
     get linkedin(){
-        //return $('a[target="_blank"][href="https://www.linkedin.com/company/qualityworks-consulting-group-llc"]');
+        
         return $('//a[@href="https://www.linkedin.com/company/qualityworks-consulting-group-llc"]');
 
     }
     get twitter (){
-        return $('//a[@href="https://www.linkedin.com/company/qualityworks-consulting-group-llc"]');
+        return $('//a[@href="https://twitter.com/qualityworkscg"]');
     }
 
     get email (){
         return $('//p[normalize-space()="info@qualityworkscg.com"]');
+    }
+    get toast(){
+        return $('#toast-1 > div');
     }
 
 
@@ -54,42 +58,36 @@ class contact extends Page {
      * e.g. to login using username and password
      */
     async linkedincheck () {
-        var linkedurl = "https://www.linkedin.com/company/qualityworks-consulting-group-llc";
+        //var linkedurl = "https://www.linkedin.com/company/qualityworks-consulting-group-llc";
         await this.linkedin.waitForDisplayed(1500);
         await this.linkedin.click();
         await browser.pause(2000);
         await browser.switchWindow("https://www.linkedin.com/company/qualityworks-consulting-group-llc");
-        await expect (browser.getUrl()===linkedurl);
-
-        
-        
         
     }
 
     async twittercheck (){
-        var twitterurl = "https://twitter.com/qualityworkscg";
+        
         await this.twitter.waitForDisplayed(1500);
         await this.twitter.click();
         await browser.pause(2000);
         await browser.switchWindow("https://twitter.com/qualityworkscg");
-        await expect (browser.getUrl()===twitterurl);
+         
     }
 
     async contactform (name1, name2, email, subject, message) {
         
         await this.fname.waitForDisplayed(1500);
-        await browser.pause(2000);
-        //await this.fname.click();
-        await this.fname.setvalue(name1);
-        await this.lname.waitForDisplayed(500);
+        await this.fname.click();
+        await this.fname.setValue(name1);
         await this.lname.click();
-        await this.lname.setvalue(name2);
+        await this.lname.setValue(name2);
         await this.emailfield.waitForDisplayed(500);
-        await this.emailfield.setvalue(email);
+        await this.emailfield.setValue(email);
         await this.subject.waitForDisplayed(500);
-        await this.subject.setvalue(subject);
+        await this.subject.setValue(subject);
         await this.message.waitForDisplayed(500);
-        await this.message.setvalue(message);
+        await this.message.setValue(message);
         await this.sendmmssgbtn.waitForDisplayed(500);
         await this.sendmmssgbtn.click();
         

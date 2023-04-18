@@ -11,14 +11,17 @@ describe('My contact page test ', () => {
 
         await LoginPage.open();
         await LoginPage.login("test@mailinator.com", "Stephanie1!");
-        await browser.url('https://ui-automation-camp.vercel.app/products');
+        expect( browser.url('https://ui-automation-camp.vercel.app/products'));
         await contact.contactbtn.click();
-        await contact.linkedincheck();
-        await browser.pause(5000);
-        await browser.switchWindow("https://ui-automation-camp.vercel.app/contact");
-        //await contact.twittercheck();
-        await browser.pause(2000);
         await contact.contactform ("Steph","jo","test@mailinator.com","Testing 123","I hope this tests works");
+        await browser.pause(3000);
+        await contact.twittercheck();
+        expect (browser.url('https://twitter.com/qualityworkscg'));
+        await browser.switchWindow("https://ui-automation-camp.vercel.app/contact");
+        await contact.linkedincheck();
+        expect (browser.url('https://www.linkedin.com/company/qualityworks-consulting-group-llc'));
+
+        
         
         
     });

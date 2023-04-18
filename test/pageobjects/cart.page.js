@@ -55,20 +55,18 @@ class cart extends Page {
      */
     async viewanddeletefromsummary () {
         await  this.viewcartsummary.click();
-        //await browser.pause(2000);
+        
         await this.deleteitemcartsummary.click();
     
-        //await this.enteremail.click();
-        //await browser.pause(1000)
+        
     }
     async viewanddeletefromdetail () {
     
-        //await browser.pause(2000);
+        
         await this.deleteitem.waitForDisplayed(2000);
         await this.deleteitem.click();
     
-        //await this.enteremail.click();
-        //await browser.pause(1000)
+        
     }
     async changequatity (){
         await this.viewdetailcart.waitForDisplayed(2000);
@@ -88,7 +86,7 @@ class cart extends Page {
      */
     open () {
         return super.open('');
-        //return super.open('customer/account/create/');
+        
     }
 }
 

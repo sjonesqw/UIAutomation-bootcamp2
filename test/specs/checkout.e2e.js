@@ -24,20 +24,17 @@ describe('My checkout  test ', () => {
         await browser.pause(2000);
         expect( browser.url('https://ui-automation-camp.vercel.app/products'));
         await addtocart.addmultiplteitems();
-        //await browser.pause(2000);
+        await browser.pause(2000);
         await checkoutPage.checkoutshipping("Test Jay","test@mailinator.com","address_Full_match", "678","Chicago","New brunswick","10");
-        //const paymentbox = await checkoutPage.paymentiframe;
         const paymentbox = await $('<iframe />');
         await browser.switchToFrame(paymentbox);
         await browser.pause(3000);
         await checkoutPage.checkoutpayment();
-        //await cartview.viewanddeletefromdetail();
         await browser.pause(2000);
-        //await browser.url('https://ui-automation-camp.vercel.app/products');
+        
         
     });
-    // it('should login to the application and add the second and third items on the page to the users cart', async () => {
-    //     //await cartpage.signout();
+    
    
 
 

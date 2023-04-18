@@ -26,7 +26,7 @@ class search extends Page {
      * e.g. to login using username and password
      */
     async search (term) {
-        await this.searchfield.scrollIntoview();
+        await this.searchfield.scrollIntoView();
         await  this.searchfield.click();
         await  this.searchfield.setValue(term);
         //verify that search results match term

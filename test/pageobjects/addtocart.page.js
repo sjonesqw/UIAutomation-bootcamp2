@@ -1,7 +1,5 @@
 
-//const { $ } = require('webdriverio/build/commands/element');
-//const { $ } = require('webdriverio/build/commands/element');
-//const { $ } = require('webdriverio/build/commands/element');
+
 const Page = require('./page');
 
 class addtocart extends Page{
@@ -43,12 +41,10 @@ class addtocart extends Page{
     }
 
     get rmvitem () {
-        //return $('//li[1]//div[1]//div[1]//div[2]//div[1]//div[2]//div[2]//div[1]//div[1]//button[1]//*[name()="svg"]');
+
         return $('button[title="Remove item"]');
     }
-    // get rmvitem2 () {
-    //     return $('//li[1]//div[1]//div[1]//div[2]//div[1]//div[2]//div[2]//div[1]//div[1]//button[1]//*[name()='svg']')
-    // }
+    
 
     //add multiple of a single item to cart, from gallery page
     async addsingleitem () {
@@ -71,15 +67,7 @@ class addtocart extends Page{
         await this.addtocartprdctpage.click();
     }
 
-    //add more than one types of items to the cart, from produt detail pages
-    // async addmultiplteprdctpage () {
-    //     await this.mitem1prdctpage.click();
-    //     await this.addtocartprdctpage.click();
-    //     await browser.url('https://ui-automation-camp.vercel.app/products');
-    //     await this.mitem2prdctpage.click();
-    //     await this.addtocartprdctpage.click();
 
-    // }
 
     //signout after each to get a fresh cart
     async signout(){

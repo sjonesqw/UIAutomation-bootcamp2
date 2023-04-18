@@ -18,11 +18,9 @@ describe('My Login application', () => {
                  expect (LoginPage.errormsg.toHaveText("Wrong email or password."));
                  await browser.url('https://ui-automation-camp.vercel.app/');
             }else{
-                //await browser.pause(2000);
                 expect( browser.url('https://ui-automation-camp.vercel.app/products'));
                 await loginPage.signoutbtn.waitForDisplayed(2000);
                 await LoginPage.signoutbtn.click();
-                //await browser.pause(1500);
                 await browser.url('https://ui-automation-camp.vercel.app/');
             }
             

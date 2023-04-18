@@ -2,8 +2,7 @@
 const signupdata = require('../data/signupdata');
 const signupPage = require('../pageobjects/Authentication/signup.page');
 const signup = require('../pageobjects/Authentication/signup.page')
-//import { browser, $, $$, expect } from '@wdio/globals'
-//const SecurePage = require('../pageobjects/secure.page')
+
 /*
 users
 1: test@mailinator.com , Stephanie1!

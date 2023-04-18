@@ -21,32 +21,27 @@ class signupnew extends Page {
     }
 
     get enteremail () {
-        //return $('input[name="email"]');
+        
         return $('//input[@id="1-email"]');
-        //return $('//*[@id="1-email"]');
+        
     }
-    ////input[@id='1-email']
-    // //*[@id="1-email"]
-
+    
     get enterpassword () {
-       // return $ ('input[name="password"]');
+       
         return $('//input[@id="1-password"]');
-        //return $('//*[@id="1-password"]');
-        //return $('//input[name="password"]');
-        //return $('#1 -password');
+        
     }
 
     get btnSubmit () {
         return $('//button[@id="1-submit"]');
-        //return $('//*[@id="1-submit"]');
-        // //*[@id="1-submit"]
+        
     }
     get errormsg (){
         return $('.auth0-global-message.auth0-global-message-error');
     }
     get signoutbtn(){
         return $('#top-sign-out');
-        //return $('//button[normalize-space()="Sign Out"]');
+        
     }
 
     /**
@@ -57,10 +52,7 @@ class signupnew extends Page {
         await  this.entersite.click();
         await  this.signuptab.waitForDisplayed(3000);
         await  this.signuptab.click();
-        //await browser.pause(2000);
         await this.enteremail.waitForDisplayed(3000);
-        //await this.enteremail.click();
-        //await browser.pause(1000);
         await this.enteremail.setValue(username);
         await this.enterpassword.click();
         await browser.pause(1000);
@@ -73,7 +65,7 @@ class signupnew extends Page {
      */
     open () {
         return super.open('');
-        //return super.open('customer/account/create/');
+        
     }
 }
 

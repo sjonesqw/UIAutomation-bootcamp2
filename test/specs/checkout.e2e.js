@@ -26,8 +26,10 @@ describe('My checkout  test ', () => {
         await addtocart.addmultiplteitems();
         //await browser.pause(2000);
         await checkoutPage.checkoutshipping("Test Jay","test@mailinator.com","address_Full_match", "678","Chicago","New brunswick","10");
-        const paymentbox = await checkoutPage.paymentiframe;
+        //const paymentbox = await checkoutPage.paymentiframe;
+        const paymentbox = await $('<iframe />');
         await browser.switchToFrame(paymentbox);
+        await browser.pause(3000);
         await checkoutPage.checkoutpayment();
         //await cartview.viewanddeletefromdetail();
         await browser.pause(2000);

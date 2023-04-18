@@ -15,6 +15,8 @@
 const { Key } =  require("webdriverio");
 //const { $ } = require("webdriverio/build/commands/element");
 //const { $ } = require("webdriverio/build/commands/element");
+//const { $ } = require("webdriverio/build/commands/element");
+//const { $ } = require("webdriverio/build/commands/element");
 //onst { $ } = require("webdriverio/build/commands/element");
 //const { $ } = require("webdriverio/build/commands/element");
 const Page = require('./page');
@@ -99,11 +101,16 @@ class checkout extends Page {
         return $('button[type="submit"]'); 
     }
     get paymentiframe (){
-        return $('//div[@class="snipcart-payment-card-form snipcart-payment-card-form--loaded"]/iframe');
+        //return $('//div[@class="snipcart-payment-card-form snipcart-payment-card-form--loaded"]/iframe');
         //div[@class='snipcart-payment-card-form snipcart-payment-card-form--loaded']
+        return $('iframe[src="https://payment.snipcart.com/form/NTYzYzIxM2EtYTU0Ni00NWQ1LTgyNDctY2ZmMDllOWI1NGIxNjM4MDE4OTIwMzY1NDYyMjc2/b7d8b7e4-bcffcdc0-dff5-4c12-af64-04146b40a062"]');
+    }
+    get paymentfram (){
+        return $('#snipcart-checkout-step-payment')
     }
     get billingcard (){
-        return $('#card-number');
+        //return $('#card-number');
+        return $('//*[@name="card-number"]');
     }
     get billingexpiry(){
         return $('#expiry-date');
@@ -127,7 +134,8 @@ class checkout extends Page {
         //await this.checkoutbtn.waitForDisplayed(2000);
         await this.detailedcart.click();
         await this.checkoutbtn.click();
-        //await browser.url('https://ui-automation-camp.vercel.app/products#/checkout');
+        expect( browser.url('https://ui-automation-camp.vercel.app/products#/checkout'));
+        await browser.pause(2000);
         await this.billingname.waitForDisplayed(2000);
         //await this.billingname.click();
         await this.billingname.setValue(name);
@@ -175,8 +183,12 @@ class checkout extends Page {
         await this.billingcard.waitForDisplayed(1500);
         await this.billingcard.click();
         await this.billingcard.setValue(testcard);
-        await this.billingexpiry.setValue(expdate);
-        await this.billingcvv.setValue (cvv);
+        await browser.setValue('input', ['Tab']);
+        await browser.keys(expdate);
+        await browser.setValue('input', ['Tab']);
+        await browser.keys(cvv);
+        // await this.billingexpiry.setValue(expdate);
+        // await this.billingcvv.setValue (cvv);
         await this.paymentbtn.click();
     }
 

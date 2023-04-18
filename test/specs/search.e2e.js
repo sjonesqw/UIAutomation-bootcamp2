@@ -6,7 +6,7 @@ describe('My filter & sort test ', () => {
 
     
 
-    it(' should naviagate to the product gallery page and search for items from the search ddata file', async () => {
+    it(' should naviagate to the product gallery page and search for items from the search data file', async () => {
         
 
         await LoginPage.open();

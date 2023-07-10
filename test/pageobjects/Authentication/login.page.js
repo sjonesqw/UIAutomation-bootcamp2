@@ -1,45 +1,48 @@
 
-
-
 const Page = require('../page');
 
 /**
  * sub page containing specific selectors and methods for a specific page
  */
 class LoginPage extends Page {
-    /**
-     * define selectors using getter methods
-     *  
-     */
-    get entersite (){
+    
+    //navigate from the landing page to the sign in or sign up page
+    get enterBtn (){
         
         return $('#signInOrRegister');
         
     }
 
-    get enteremail () {
+    //select email field
+    get enterEmail () {
         
         return $('//*[@id="1-email"]');
         
         
     }
     
-
-    get enterpassword () {
+    //select password field 
+    get enterPassword () {
        
         return $('//input[@id="1-password"]'); 
         
     }
 
+    
     get btnSubmit () {
         
         
         return $('body > div:nth-child(4) > div:nth-child(1) > div:nth-child(2) > form:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > button:nth-child(2)');
     }
-    get errormsg (){
+    get errorMsgGen (){
         return $('.auth0-global-message.auth0-global-message-error');
     }
-    get signoutbtn(){
+    get errorMsgEmail (){
+        return $('.auth0-lock-error-invalid-hint');
+    }
+        
+
+    get signoutBtn(){
         return $('#top-sign-out');
         
     }
@@ -49,15 +52,21 @@ class LoginPage extends Page {
      * e.g. to login using username and password
      */
     async login (username, password) {
-        await this.entersite.waitForDisplayed(2000);
-        await  this.entersite.click();
-        await this.enteremail.waitForDisplayed(2000);
-        await this.enteremail.click();
-        await this.enteremail.setValue(username);
-        await this.enterpassword.waitForDisplayed(1500);
-        await this.enterpassword.click();
-        await this.enterpassword.setValue(password);
+        
+        await this.enterBtn.waitForDisplayed(2000);
+        await this.enterBtn.click();
+        await this.enterEmail.waitForDisplayed(2000);
+        await this.enterEmail.click();
+        await this.enterEmail.setValue(username);
+        await this.enterPassword.waitForDisplayed(1500);
+        await this.enterPassword.click();
+        await this.enterPassword.setValue(password);
         await this.btnSubmit.click();
+    }
+
+    async enterSite(){
+        await this.enterBtn.waitForDisplayed(2000);
+        await this.enterBtn.click();
     }
 
     /**
@@ -65,7 +74,7 @@ class LoginPage extends Page {
      */
     open () {
         return super.open('');
-        //return super.open('customer/account/create/');
+    
     }
 }
 

@@ -1,6 +1,6 @@
 
 const signupdata = require('../data/signupdata');
-const signupPage = require('../pageobjects/Authentication/signup.page');
+//const signupPage = require('../pageobjects/Authentication/signup.page');
 const signup = require('../pageobjects/Authentication/signup.page')
 
 /*
@@ -11,21 +11,28 @@ users
 
 
 describe('My Login application', () => {
-    it('should sign up a user for the application with valid credentials', async () => {
-        await signup.open();
-        for (const user of signupdata){
+
+    for (const user of signupdata){
+        it('should sign up a user for the application with valid credentials', async () => {
+        
+            await signup.open();
+        
             await signup.signup(user.email,user.password);
-            if (user.username=="exisitng user"){
-                expect (signup.errormsg.toHaveText("We're sorry, something went wrong when attempting to sign up."));
-                await  browser.url('https://ui-automation-camp.vercel.app/');
+            await browser.pause(2000);
+            if (user.username=="existing user"){
+                await expect (signup.errorMsg.toHaveText("We're sorry, something went wrong when attempting to sign up."));
+                await expect(browser.url('https://ui-automation-camp.vercel.app/'));
             }else{
-                expect( browser.url('https://ui-automation-camp.vercel.app/products'));
-                await signupPage.signoutbtn.waitForDisplayed(2000);
-                await signupPage.signoutbtn.click();
-                await browser.url('https://ui-automation-camp.vercel.app/');
+                await expect(browser).toHaveUrl('https://ui-automation-camp.vercel.app/products');
+
+                //expect(browser.url('https://ui-automation-camp.vercel.app/products'));
+                await signup.signoutBtn.waitForDisplayed(2000);
+                await signup.signoutBtn.click();
+                await expect(browser).toHaveUrl('https://ui-automation-camp.vercel.app/');
             }
-        }
+        
         
     });
+}
     
 });

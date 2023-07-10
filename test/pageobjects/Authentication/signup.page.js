@@ -1,32 +1,29 @@
 
-//const { $ } = require('webdriverio/build/commands/element');
+
 const Page = require('../page');
 
 /**
  * sub page containing specific selectors and methods for a specific page
  */
 class signupnew extends Page {
-    /**
-     * define selectors using getter methods
-     *  
-     */
-    get entersite (){
+    
+    get enterSite (){
         return $('//*[@id="signInOrRegister"]');
-        //return $('#signInOrRegister');
+        
         
     }
 
-    get signuptab (){
+    get signupTab (){
         return $('//a[normalize-space()="Sign Up"]');
     }
 
-    get enteremail () {
+    get enterEmail () {
         
         return $('//input[@id="1-email"]');
         
     }
     
-    get enterpassword () {
+    get enterPassword () {
        
         return $('//input[@id="1-password"]');
         
@@ -36,10 +33,10 @@ class signupnew extends Page {
         return $('//button[@id="1-submit"]');
         
     }
-    get errormsg (){
+    get errorMsg (){
         return $('.auth0-global-message.auth0-global-message-error');
     }
-    get signoutbtn(){
+    get signoutBtn(){
         return $('#top-sign-out');
         
     }
@@ -49,14 +46,14 @@ class signupnew extends Page {
      * e.g. to login using username and password
      */
     async signup (username, password) {
-        await  this.entersite.click();
-        await  this.signuptab.waitForDisplayed(3000);
-        await  this.signuptab.click();
-        await this.enteremail.waitForDisplayed(3000);
-        await this.enteremail.setValue(username);
-        await this.enterpassword.click();
+        await  this.enterSite.click();
+        await  this.signupTab.waitForDisplayed(3000);
+        await  this.signupTab.click();
+        await this.enterEmail.waitForDisplayed(3000);
+        await this.enterEmail.setValue(username);
+        await this.enterPassword.click();
         await browser.pause(1000);
-        await this.enterpassword.setValue(password);
+        await this.enterPassword.setValue(password);
         await this.btnSubmit.click();
     }
 
